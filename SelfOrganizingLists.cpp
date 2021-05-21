@@ -15,7 +15,7 @@ struct node
     char info;
     int ctr;
     struct node *next;
-} *start;
+} *head;
 
 /*
  * Class Declaration
@@ -37,7 +37,7 @@ public:
 
     Self_List()
     {
-        start = NULL;
+        head = NULL;
     }
 };
 
@@ -49,7 +49,7 @@ int main()
     int ch, pos;
     char element;
     Self_List sl;
-    start = NULL;
+    head = NULL;
 
     while (1)
     {
@@ -157,13 +157,13 @@ void Self_List::InsertLast(char val)
     struct node *temp, *s;
     temp = CreateNode(val);
 
-    if (start == NULL)
+    if (head == NULL)
     {
-        start = temp;
+        head = temp;
         return;
     }
 
-    s = start;
+    s = head;
 
     while (s->next != NULL)
     {
@@ -183,16 +183,16 @@ void Self_List::InsertBegin(char val)
     struct node *temp, *p;
     temp = CreateNode(val);
 
-    if (start == NULL)
+    if (head == NULL)
     {
-        start = temp;
-        start->next = NULL;
+        head = temp;
+        head->next = NULL;
     }
     else
     {
-        p = start;
-        start = temp;
-        start->next = p;
+        p = head;
+        head = temp;
+        head->next = p;
     }
 }
 
@@ -203,17 +203,17 @@ void Self_List::DeletePos(int pos)
 {
     int i, key = 0;
     
-    if (start == NULL)
+    if (head == NULL)
     {
         return;
     }
 
     struct node *s, *ptr;
-    s = start;
+    s = head;
 
     if (pos == 1)
     {
-        start = s->next;
+        head = s->next;
     }
     else
     {
@@ -225,7 +225,7 @@ void Self_List::DeletePos(int pos)
 
         if (pos > 0 && pos <= key)
         {
-            s = start;
+            s = head;
             for (i = 1; i < pos; i++)
             {
                 ptr = s;
@@ -245,13 +245,13 @@ int Self_List::search(char val)
 {
     int pos = 0;
     bool flag = false;
-    if (start == NULL)
+    if (head == NULL)
     {
         return 0;
     }
 
     struct node *s;
-    s = start;
+    s = head;
 
     while (s != NULL)
     {
@@ -278,12 +278,12 @@ void Self_List::sort()
     struct node *ptr, *s;
     int val, temp;
 
-    if (start == NULL)
+    if (head == NULL)
     {
         return;
     }
 
-    ptr = start;
+    ptr = head;
 
     while (ptr != NULL)
     {
@@ -310,13 +310,13 @@ void Self_List::display()
 {
     struct node *temp;
 
-    if (start == NULL)
+    if (head == NULL)
     {
         cout << "The List is Empty, nothing to display" << endl;
         return;
     }
 
-    temp = start;
+    temp = head;
 
     while (temp != NULL)
     {
@@ -331,7 +331,7 @@ void Self_List::display()
  */
 void Self_List::MoveToFront()
 {
-    if (start == NULL)
+    if (head == NULL)
     {
         cout << "The List is Empty, first create the list" << endl;
         return;
@@ -364,7 +364,7 @@ void Self_List::MoveToFront()
  */
 void Self_List::transpose()
 {
-    if (start == NULL)
+    if (head == NULL)
     {
         cout << "The List is Empty, first create the list" << endl;
         return;
@@ -379,7 +379,7 @@ void Self_List::transpose()
 
     for (int i = 0; i < len; i++)
     {
-        s = start;
+        s = head;
         if (search(stream[i]) != 0)
         {
             if (search(stream[i]) != 1)
@@ -404,7 +404,7 @@ void Self_List::transpose()
  */
 void Self_List::count()
 {
-    if (start == NULL)
+    if (head == NULL)
     {
         cout << "The List is Empty, first create the list" << endl;
         return;
@@ -419,7 +419,7 @@ void Self_List::count()
 
     for (int i = 0; i < len; i++)
     {
-        s = start;
+        s = head;
         if (search(stream[i]) != 0)
         {
             pos = search(stream[i]);
